@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		27F5E6EE1DD9E72A00179F1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5E6ED1DD9E72A00179F1D /* main.m */; };
 		27F5E6F11DD9E72A00179F1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5E6F01DD9E72A00179F1D /* AppDelegate.m */; };
-		27F5E6F41DD9E72A00179F1D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5E6F31DD9E72A00179F1D /* ViewController.m */; };
+		27F5E6F41DD9E72A00179F1D /* ImageMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5E6F31DD9E72A00179F1D /* ImageMenuViewController.m */; };
 		27F5E6F71DD9E72A00179F1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27F5E6F51DD9E72A00179F1D /* Main.storyboard */; };
 		27F5E6FA1DD9E72A00179F1D /* Flikr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27F5E6F81DD9E72A00179F1D /* Flikr.xcdatamodeld */; };
 		27F5E6FC1DD9E72A00179F1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27F5E6FB1DD9E72A00179F1D /* Assets.xcassets */; };
 		27F5E6FF1DD9E72A00179F1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27F5E6FD1DD9E72A00179F1D /* LaunchScreen.storyboard */; };
+		882FDBBD4EBD2EA030F8E0BC /* libPods-Flikr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3238EE300AEE0DC400D75D38 /* libPods-Flikr.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +22,16 @@
 		27F5E6ED1DD9E72A00179F1D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		27F5E6EF1DD9E72A00179F1D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27F5E6F01DD9E72A00179F1D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		27F5E6F21DD9E72A00179F1D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		27F5E6F31DD9E72A00179F1D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		27F5E6F21DD9E72A00179F1D /* ImageMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageMenuViewController.h; sourceTree = "<group>"; };
+		27F5E6F31DD9E72A00179F1D /* ImageMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageMenuViewController.m; sourceTree = "<group>"; };
 		27F5E6F61DD9E72A00179F1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27F5E6F91DD9E72A00179F1D /* Flikr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Flikr.xcdatamodel; sourceTree = "<group>"; };
 		27F5E6FB1DD9E72A00179F1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27F5E6FE1DD9E72A00179F1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27F5E7001DD9E72A00179F1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3238EE300AEE0DC400D75D38 /* libPods-Flikr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Flikr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EAB10258E58386222514904 /* Pods-Flikr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flikr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flikr/Pods-Flikr.debug.xcconfig"; sourceTree = "<group>"; };
+		B978B104C115CCBD94B39167 /* Pods-Flikr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flikr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flikr/Pods-Flikr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				882FDBBD4EBD2EA030F8E0BC /* libPods-Flikr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +51,8 @@
 			children = (
 				27F5E6EB1DD9E72A00179F1D /* Flikr */,
 				27F5E6EA1DD9E72A00179F1D /* Products */,
+				A4DD44F7C9F5371A4380B71A /* Pods */,
+				EEF7E87DC67E9A3D30FE20D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,12 +69,9 @@
 			children = (
 				27F5E6EF1DD9E72A00179F1D /* AppDelegate.h */,
 				27F5E6F01DD9E72A00179F1D /* AppDelegate.m */,
-				27F5E6F21DD9E72A00179F1D /* ViewController.h */,
-				27F5E6F31DD9E72A00179F1D /* ViewController.m */,
+				27F5E6F21DD9E72A00179F1D /* ImageMenuViewController.h */,
+				27F5E6F31DD9E72A00179F1D /* ImageMenuViewController.m */,
 				27F5E6F51DD9E72A00179F1D /* Main.storyboard */,
-				27F5E6FB1DD9E72A00179F1D /* Assets.xcassets */,
-				27F5E6FD1DD9E72A00179F1D /* LaunchScreen.storyboard */,
-				27F5E7001DD9E72A00179F1D /* Info.plist */,
 				27F5E6F81DD9E72A00179F1D /* Flikr.xcdatamodeld */,
 				27F5E6EC1DD9E72A00179F1D /* Supporting Files */,
 			);
@@ -77,9 +81,29 @@
 		27F5E6EC1DD9E72A00179F1D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				27F5E7001DD9E72A00179F1D /* Info.plist */,
+				27F5E6FB1DD9E72A00179F1D /* Assets.xcassets */,
+				27F5E6FD1DD9E72A00179F1D /* LaunchScreen.storyboard */,
 				27F5E6ED1DD9E72A00179F1D /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4DD44F7C9F5371A4380B71A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5EAB10258E58386222514904 /* Pods-Flikr.debug.xcconfig */,
+				B978B104C115CCBD94B39167 /* Pods-Flikr.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EEF7E87DC67E9A3D30FE20D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3238EE300AEE0DC400D75D38 /* libPods-Flikr.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,9 +113,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27F5E7031DD9E72A00179F1D /* Build configuration list for PBXNativeTarget "Flikr" */;
 			buildPhases = (
+				30B440439A1A18B17FD1C9C4 /* [CP] Check Pods Manifest.lock */,
 				27F5E6E51DD9E72A00179F1D /* Sources */,
 				27F5E6E61DD9E72A00179F1D /* Frameworks */,
 				27F5E6E71DD9E72A00179F1D /* Resources */,
+				69317EC14D162A92A04CDD90 /* [CP] Embed Pods Frameworks */,
+				02EB556D2CD25792172C7ECC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,12 +176,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		02EB556D2CD25792172C7ECC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Flikr/Pods-Flikr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		30B440439A1A18B17FD1C9C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		69317EC14D162A92A04CDD90 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Flikr/Pods-Flikr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		27F5E6E51DD9E72A00179F1D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27F5E6F41DD9E72A00179F1D /* ViewController.m in Sources */,
+				27F5E6F41DD9E72A00179F1D /* ImageMenuViewController.m in Sources */,
 				27F5E6F11DD9E72A00179F1D /* AppDelegate.m in Sources */,
 				27F5E6FA1DD9E72A00179F1D /* Flikr.xcdatamodeld in Sources */,
 				27F5E6EE1DD9E72A00179F1D /* main.m in Sources */,
@@ -273,6 +348,7 @@
 		};
 		27F5E7041DD9E72A00179F1D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EAB10258E58386222514904 /* Pods-Flikr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CQAYKNNUE2;
@@ -285,6 +361,7 @@
 		};
 		27F5E7051DD9E72A00179F1D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B978B104C115CCBD94B39167 /* Pods-Flikr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CQAYKNNUE2;
@@ -314,6 +391,7 @@
 				27F5E7051DD9E72A00179F1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
