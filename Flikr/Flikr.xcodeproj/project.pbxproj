@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		278E59531DDAEBA000779482 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E59521DDAEBA000779482 /* ImageViewController.m */; };
 		278E59561DDAED5500779482 /* MyFlickrSpeaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E59551DDAED5500779482 /* MyFlickrSpeaker.m */; };
+		278E59591DDAF6C000779482 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E59581DDAF6C000779482 /* CollectionViewController.m */; };
+		278E595C1DDB0DE600779482 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E595B1DDB0DE600779482 /* PhotoCell.m */; };
 		27F5E6EE1DD9E72A00179F1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5E6ED1DD9E72A00179F1D /* main.m */; };
 		27F5E6F11DD9E72A00179F1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5E6F01DD9E72A00179F1D /* AppDelegate.m */; };
-		27F5E6F41DD9E72A00179F1D /* ImageMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5E6F31DD9E72A00179F1D /* ImageMenuViewController.m */; };
 		27F5E6F71DD9E72A00179F1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27F5E6F51DD9E72A00179F1D /* Main.storyboard */; };
 		27F5E6FA1DD9E72A00179F1D /* Flikr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27F5E6F81DD9E72A00179F1D /* Flikr.xcdatamodeld */; };
 		27F5E6FC1DD9E72A00179F1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27F5E6FB1DD9E72A00179F1D /* Assets.xcassets */; };
@@ -24,12 +25,14 @@
 		278E59521DDAEBA000779482 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		278E59541DDAED5500779482 /* MyFlickrSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFlickrSpeaker.h; sourceTree = "<group>"; };
 		278E59551DDAED5500779482 /* MyFlickrSpeaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFlickrSpeaker.m; sourceTree = "<group>"; };
+		278E59571DDAF6C000779482 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		278E59581DDAF6C000779482 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		278E595A1DDB0DE600779482 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		278E595B1DDB0DE600779482 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		27F5E6E91DD9E72A00179F1D /* Flikr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flikr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F5E6ED1DD9E72A00179F1D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		27F5E6EF1DD9E72A00179F1D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27F5E6F01DD9E72A00179F1D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		27F5E6F21DD9E72A00179F1D /* ImageMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageMenuViewController.h; sourceTree = "<group>"; };
-		27F5E6F31DD9E72A00179F1D /* ImageMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageMenuViewController.m; sourceTree = "<group>"; };
 		27F5E6F61DD9E72A00179F1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27F5E6F91DD9E72A00179F1D /* Flikr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Flikr.xcdatamodel; sourceTree = "<group>"; };
 		27F5E6FB1DD9E72A00179F1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,10 +58,12 @@
 		278E59501DDAEB5900779482 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				27F5E6F21DD9E72A00179F1D /* ImageMenuViewController.h */,
-				27F5E6F31DD9E72A00179F1D /* ImageMenuViewController.m */,
 				278E59511DDAEBA000779482 /* ImageViewController.h */,
 				278E59521DDAEBA000779482 /* ImageViewController.m */,
+				278E59571DDAF6C000779482 /* CollectionViewController.h */,
+				278E59581DDAF6C000779482 /* CollectionViewController.m */,
+				278E595A1DDB0DE600779482 /* PhotoCell.h */,
+				278E595B1DDB0DE600779482 /* PhotoCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -248,8 +253,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				278E59531DDAEBA000779482 /* ImageViewController.m in Sources */,
-				27F5E6F41DD9E72A00179F1D /* ImageMenuViewController.m in Sources */,
+				278E59591DDAF6C000779482 /* CollectionViewController.m in Sources */,
 				27F5E6F11DD9E72A00179F1D /* AppDelegate.m in Sources */,
+				278E595C1DDB0DE600779482 /* PhotoCell.m in Sources */,
 				27F5E6FA1DD9E72A00179F1D /* Flikr.xcdatamodeld in Sources */,
 				278E59561DDAED5500779482 /* MyFlickrSpeaker.m in Sources */,
 				27F5E6EE1DD9E72A00179F1D /* main.m in Sources */,

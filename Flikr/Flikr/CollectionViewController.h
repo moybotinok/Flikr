@@ -1,5 +1,5 @@
 //
-//  ImageViewController.h
+//  CollectionViewController.h
 //  Flikr
 //
 //  Created by Татьяна Бочарникова on 15/11/2016.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImageViewController : UIViewController
-
-@property (strong, nonatomic) NSURL *photoURL;
+@interface CollectionViewController : UICollectionViewController
 
 @end

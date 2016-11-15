@@ -1,15 +1,13 @@
 //
-//  ImageViewController.h
+//  PhotoCell.m
 //  Flikr
 //
 //  Created by Татьяна Бочарникова on 15/11/2016.
 //  Copyright © 2016 Татьяна Бочарникова. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PhotoCell.h"
 
-@interface ImageViewController : UIViewController
-
-@property (strong, nonatomic) NSURL *photoURL;
+@implementation PhotoCell
 
 @end

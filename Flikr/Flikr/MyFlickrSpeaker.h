@@ -10,4 +10,7 @@
 
 @interface MyFlickrSpeaker : NSObject
 
+-(instancetype)init;
+-(NSArray *)allPhotoURLs;
+
 @end

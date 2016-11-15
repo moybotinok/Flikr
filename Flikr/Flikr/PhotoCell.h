@@ -1,5 +1,5 @@
 //
-//  ImageViewController.h
+//  PhotoCell.h
 //  Flikr
 //
 //  Created by Татьяна Бочарникова on 15/11/2016.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImageViewController : UIViewController
+@interface PhotoCell : UICollectionViewCell
 
-@property (strong, nonatomic) NSURL *photoURL;
+@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 
 @end
