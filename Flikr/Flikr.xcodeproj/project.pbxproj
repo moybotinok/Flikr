@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		278E59531DDAEBA000779482 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E59521DDAEBA000779482 /* ImageViewController.m */; };
+		278E59561DDAED5500779482 /* MyFlickrSpeaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E59551DDAED5500779482 /* MyFlickrSpeaker.m */; };
 		27F5E6EE1DD9E72A00179F1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5E6ED1DD9E72A00179F1D /* main.m */; };
 		27F5E6F11DD9E72A00179F1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5E6F01DD9E72A00179F1D /* AppDelegate.m */; };
 		27F5E6F41DD9E72A00179F1D /* ImageMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5E6F31DD9E72A00179F1D /* ImageMenuViewController.m */; };
@@ -18,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		278E59511DDAEBA000779482 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		278E59521DDAEBA000779482 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		278E59541DDAED5500779482 /* MyFlickrSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFlickrSpeaker.h; sourceTree = "<group>"; };
+		278E59551DDAED5500779482 /* MyFlickrSpeaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFlickrSpeaker.m; sourceTree = "<group>"; };
 		27F5E6E91DD9E72A00179F1D /* Flikr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flikr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F5E6ED1DD9E72A00179F1D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		27F5E6EF1DD9E72A00179F1D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -46,6 +52,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		278E59501DDAEB5900779482 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				27F5E6F21DD9E72A00179F1D /* ImageMenuViewController.h */,
+				27F5E6F31DD9E72A00179F1D /* ImageMenuViewController.m */,
+				278E59511DDAEBA000779482 /* ImageViewController.h */,
+				278E59521DDAEBA000779482 /* ImageViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		27F5E6E01DD9E72A00179F1D = {
 			isa = PBXGroup;
 			children = (
@@ -67,10 +84,9 @@
 		27F5E6EB1DD9E72A00179F1D /* Flikr */ = {
 			isa = PBXGroup;
 			children = (
-				27F5E6EF1DD9E72A00179F1D /* AppDelegate.h */,
-				27F5E6F01DD9E72A00179F1D /* AppDelegate.m */,
-				27F5E6F21DD9E72A00179F1D /* ImageMenuViewController.h */,
-				27F5E6F31DD9E72A00179F1D /* ImageMenuViewController.m */,
+				278E59541DDAED5500779482 /* MyFlickrSpeaker.h */,
+				278E59551DDAED5500779482 /* MyFlickrSpeaker.m */,
+				278E59501DDAEB5900779482 /* Controllers */,
 				27F5E6F51DD9E72A00179F1D /* Main.storyboard */,
 				27F5E6F81DD9E72A00179F1D /* Flikr.xcdatamodeld */,
 				27F5E6EC1DD9E72A00179F1D /* Supporting Files */,
@@ -81,6 +97,8 @@
 		27F5E6EC1DD9E72A00179F1D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				27F5E6EF1DD9E72A00179F1D /* AppDelegate.h */,
+				27F5E6F01DD9E72A00179F1D /* AppDelegate.m */,
 				27F5E7001DD9E72A00179F1D /* Info.plist */,
 				27F5E6FB1DD9E72A00179F1D /* Assets.xcassets */,
 				27F5E6FD1DD9E72A00179F1D /* LaunchScreen.storyboard */,
@@ -229,9 +247,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				278E59531DDAEBA000779482 /* ImageViewController.m in Sources */,
 				27F5E6F41DD9E72A00179F1D /* ImageMenuViewController.m in Sources */,
 				27F5E6F11DD9E72A00179F1D /* AppDelegate.m in Sources */,
 				27F5E6FA1DD9E72A00179F1D /* Flikr.xcdatamodeld in Sources */,
+				278E59561DDAED5500779482 /* MyFlickrSpeaker.m in Sources */,
 				27F5E6EE1DD9E72A00179F1D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

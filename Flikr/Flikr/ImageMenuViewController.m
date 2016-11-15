@@ -7,9 +7,11 @@
 //
 
 #import "ImageMenuViewController.h"
+#import "ImageViewController.h"
 #import "FlickrKit.h"
 
 @interface ImageMenuViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *buttonWithImage;
 
 @end
 
@@ -17,10 +19,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"4df385f777a0ae9361158cc0a970ab67" sharedSecret:@"f1dea1e18baeb19a"];
+
 }
 
 
+- (IBAction)buttonWithImagePressed:(id)sender {
+    [self performSegueWithIdentifier:@"toImage" sender:self];
+}
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toImage"]) {
+        if ([segue.destinationViewController isKindOfClass:[ImageViewController class]]) {
+            
+        }
+    }
+}
 
 @end
