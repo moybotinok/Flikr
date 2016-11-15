@@ -11,11 +11,13 @@
 //#import "FlickrKit.h"
 #import "MyFlickrSpeaker.h"
 #import "PhotoCell.h"
+#import "SWRevealViewController.h"
 
 @interface CollectionViewController ()
 
 @property (strong, nonatomic) NSArray *photoURLs;
 @property (nonatomic) NSUInteger currentIndex;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *revialButton;
 
 @end
 
@@ -35,9 +37,18 @@ static NSString * const reuseIdentifier = @"FlickrCell";
     // Do any additional setup after loading the view.
     MyFlickrSpeaker *myFlickerSpeaker = [[MyFlickrSpeaker alloc] init];
     self.photoURLs = [[myFlickerSpeaker allPhotoURLs] copy];
-    
+    [self setRevialButtonOn];
 }
 
+-(void)setRevialButtonOn {
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.revialButton setTarget: self.revealViewController];
+        [self.revialButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+}
 
 
 #pragma mark <UICollectionViewDataSource>
