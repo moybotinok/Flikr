@@ -10,6 +10,10 @@
 
 @interface CollectionViewController : UICollectionViewController
 
+@property (strong, nonatomic) NSMutableArray *photoURLs;
 @property (strong, nonatomic) NSMutableArray *allPhotos;
+
+-(void)addNewPhoto:(UIImage *)photo;
+-(void)updateURLs: (NSArray *)newURLs;
 
 @end

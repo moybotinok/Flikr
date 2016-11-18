@@ -44,7 +44,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="revialButton" destination="imf-BP-x2Z" id="b4x-55-8uN"/>
-                        <segue destination="4V0-P7-nSU" kind="custom" identifier="toImage" customClass="MyCustomSegueToImage" id="Hyd-nV-nZ3"/>
+                        <segue destination="4V0-P7-nSU" kind="modal" identifier="toImage" customClass="MyCustomSegueToImage" id="Hyd-nV-nZ3"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXN-OZ-lCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -64,6 +64,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Lg4-xd-fMy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rqy-82-EVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

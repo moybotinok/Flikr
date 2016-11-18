@@ -12,10 +12,11 @@
 #import "PhotoCell.h"
 #import "SWRevealViewController.h"
 #import "MyCustomSegueToImage.h"
+#import "myFlickrPhoto.h"
 
 @interface CollectionViewController ()
 
-@property (strong, nonatomic) NSArray *photoURLs;
+
 @property (nonatomic) NSUInteger currentIndex;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *revialButton;
 
@@ -28,35 +29,85 @@ static NSString * const reuseIdentifier = @"PhotoCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setRevialButtonOn];
-    
+    self.photoURLs =  [NSMutableArray array];//[[myFlickerSpeaker allPhotoURLs] copy];
     
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
     self.allPhotos = [NSMutableArray array];
     MyFlickrSpeaker *myFlickerSpeaker = [[MyFlickrSpeaker alloc] initWithViewController:self];
-    self.photoURLs = [[myFlickerSpeaker allPhotoURLs] copy];
+    
+    
+    
     //self.allPhotos = [[myFlickerSpeaker allPhotos] copy];
     // Uncomment the following line to preserve selection between presentations
     //self.clearsSelectionOnViewWillAppear = NO;
+}
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self addToolbar];
 }
 
 -(void)setRevialButtonOn {
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
     {
+        //self.revealViewController.frontViewController.view.userInteractionEnabled = NO;
         [self.revialButton setTarget: self.revealViewController];
         [self.revialButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
 }
--(NSMutableArray *)allPhotos {
-//    if (self) {
-//        [self.collectionView reloadData];
-//    }
-    return _allPhotos;
+
+
+-(void)addToolbar {
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    toolbar.frame = CGRectMake(0, self.view.frame.size.height - 44, self.view.frame.size.width, 44);
+    NSMutableArray *items = [NSMutableArray new];
+    UIBarButtonItem *itemPhoto = [[UIBarButtonItem alloc] initWithTitle:@"Photo"
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(toolBarDidSelectItemPhoto:)];
+
+    UIBarButtonItem *itemFavorite = [[UIBarButtonItem alloc] initWithTitle:@"Faivorite"
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(toolBarDidSelectItemFaivorite:)];
+    [itemPhoto setWidth:self.view.frame.size.width / 2];
+    [itemFavorite setWidth:self.view.frame.size.width / 2];
+    [items addObject:itemPhoto];
+    [items addObject:itemFavorite];
+    [toolbar setItems:items animated:NO];
+    [self.view addSubview:toolbar];
 }
 
+-(void)toolBarDidSelectItemPhoto:(id)sender {
+    
+}
+
+-(void)toolBarDidSelectItemFaivorite:(id)sender {
+    
+}
+
+-(void)addNewPhoto:(UIImage *)photo {
+    [self.allPhotos addObject:photo];
+    
+    NSArray *array = [self.collectionView indexPathsForVisibleItems];
+    NSIndexPath *index =  [array firstObject];
+    NSInteger x = index.row;
+    index = [array lastObject];
+    NSInteger y = index.row;
+    NSInteger a = self.allPhotos.count;
+    
+    if ( (a >= x) && (a <= y) ){
+        [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.allPhotos.count inSection:0]]];
+    }
+}
+
+-(void)updateURLs: (NSArray *)newURLs {
+    self.photoURLs = [newURLs copy];
+    [self.collectionView reloadData];
+}
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -65,7 +116,9 @@ static NSString * const reuseIdentifier = @"PhotoCell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.photoURLs.count;
+    if (self.photoURLs.count > 10) {
+        return self.photoURLs.count;
+    } else return 10;
 }
 
 
@@ -84,7 +137,6 @@ static NSString * const reuseIdentifier = @"PhotoCell";
 
     
 //    NSURL *url = self.photoURLs[indexPath.row];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.bounds];
 //    __block UIImage *photo = nil;
 //    dispatch_queue_t gettingPhoto = dispatch_queue_create("getphoto", NULL);
 //    dispatch_async(gettingPhoto, ^{
@@ -99,6 +151,7 @@ static NSString * const reuseIdentifier = @"PhotoCell";
     
 
 //
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.bounds];
     UIImage *image = [UIImage new];
     if (indexPath.row < self.allPhotos.count) {
         image = self.allPhotos[indexPath.row]; //[UIImage imageWithData:[NSData dataWithContentsOfURL:imageURL]];

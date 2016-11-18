@@ -13,6 +13,6 @@
 @interface MyFlickrSpeaker : NSObject
 
 -(instancetype)initWithViewController:(CollectionViewController *)vc;
-    -(NSArray *)allPhotoURLs;
+    -(void)allPhotoURLs;
 
 @end

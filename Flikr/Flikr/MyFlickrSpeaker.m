@@ -25,11 +25,12 @@
     if (self) {
         [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"4df385f777a0ae9361158cc0a970ab67" sharedSecret:@"f1dea1e18baeb19a"];
         self.collectionViewController = vc;
+        [self allPhotoURLs];
     }
     return self;
 }
 
--(NSArray *)allPhotoURLs {
+-(void)allPhotoURLs {
     NSMutableArray *photoURLs = [NSMutableArray array];
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     
@@ -39,17 +40,15 @@
             // Note this is not the main thread!
             if (response) {
                 // NSMutableArray *photoURLs = [NSMutableArray array];
-                //self.all = [response copy];
-    
                 for (NSDictionary *photoData in [response valueForKeyPath:@"photos.photo"]) {
                     NSURL *url = [fk photoURLForSize:FKPhotoSizeSmall240 fromPhotoDictionary:photoData];
                     //NSString *phototitle = [photoData valueForKey:@"title"];
-                    
                     [photoURLs addObject:url];
                 }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     // Any GUI related operations here
-//                    if (self.photoURLs.count > 0) {
+                    [self.collectionViewController updateURLs:photoURLs];
+                    //                    if (self.photoURLs.count > 0) {
 //                        NSURL *url = self.photoURLs[0];
 //                        self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
                    // }
@@ -64,7 +63,6 @@
     }
     self.photoURLs = [photoURLs copy];
     [self allPhotos];
-    return photoURLs;
 }
 
 -(void)allPhotos {
@@ -78,7 +76,6 @@
     //        if (i>7) break;
     //    }
     
-    
         __block UIImage *photo = nil;
         dispatch_queue_t gettingPhoto = dispatch_queue_create("getphoto", NULL);
         dispatch_async(gettingPhoto, ^{
@@ -87,14 +84,12 @@
                 photo = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.collectionViewController.allPhotos addObject:photo];
+                    //[self.collectionViewController.allPhotos addObject:photo];
+                    [self.collectionViewController addNewPhoto:photo];
                     NSLog(@"photo +");
                 });
             }
         });
-
-    
-    
 }
 
 

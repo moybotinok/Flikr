@@ -843,8 +843,13 @@ const int FrontViewPositionNone = 0xff;
 - (void)revealToggleAnimated:(BOOL)animated
 {
     FrontViewPosition toggledFrontViewPosition = FrontViewPositionLeft;
-    if (_frontViewPosition <= FrontViewPositionLeft)
+    if (_frontViewPosition <= FrontViewPositionLeft) {
         toggledFrontViewPosition = FrontViewPositionRight;
+        //self.frontViewController.view.userInteractionEnabled = NO;
+    } else {
+        //self.frontViewController.view.userInteractionEnabled = YES;
+    }
+
     
     [self setFrontViewPosition:toggledFrontViewPosition animated:animated];
 }

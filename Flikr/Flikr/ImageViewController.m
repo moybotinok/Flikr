@@ -19,8 +19,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-        [self createPhotoImageView];
+    [super viewWillAppear:animated];
+    [self createPhotoImageView];
 }
+
 
 -(void)createPhotoImageView {
     CGFloat navigationBatHeight = self.navigationController.navigationBar.frame.size.height;
