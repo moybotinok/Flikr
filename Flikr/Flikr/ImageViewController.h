@@ -10,6 +10,8 @@
 
 @interface ImageViewController : UIViewController
 
-@property (strong, nonatomic) NSURL *photoURL;
+//@property (strong, nonatomic) NSURL *photoURL;
+@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) UIImageView *imageView;
 
 @end

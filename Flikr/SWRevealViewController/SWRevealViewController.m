@@ -634,6 +634,8 @@ const int FrontViewPositionNone = 0xff;
         [self _initDefaultProperties];
         [self _performTransitionOperation:SWRevealControllerOperationReplaceRearController withViewController:rearViewController animated:NO];
         [self _performTransitionOperation:SWRevealControllerOperationReplaceFrontController withViewController:frontViewController animated:NO];
+        //self.view.backgroundColor = [UIColor colorWithWhite:<#(CGFloat)#> alpha:<#(CGFloat)#>];
+        
     }
     return self;
 }
@@ -1708,11 +1710,11 @@ const int FrontViewPositionNone = 0xff;
         }
         @catch(NSException *exception) {}
         
-        @try
-        {
-            [self performSegueWithIdentifier:SWSegueRightIdentifier sender:nil];
-        }
-        @catch(NSException *exception) {}
+//        @try
+//        {
+//            [self performSegueWithIdentifier:SWSegueRightIdentifier sender:nil];
+//        }
+//        @catch(NSException *exception) {}
     }
 }
 

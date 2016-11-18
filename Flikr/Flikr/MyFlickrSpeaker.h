@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class CollectionViewController;
+
 @interface MyFlickrSpeaker : NSObject
 
--(instancetype)init;
--(NSArray *)allPhotoURLs;
+-(instancetype)initWithViewController:(CollectionViewController *)vc;
+    -(NSArray *)allPhotoURLs;
 
 @end

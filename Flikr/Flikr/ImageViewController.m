@@ -10,56 +10,51 @@
 
 @interface ImageViewController ()
 
-@property (strong, nonatomic) UIImage *photoImage;
-@property (strong, nonatomic) UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *downloadIndicator;
-
 @end
 
 @implementation ImageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self createPhotoImageView];
-    //self.photoImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.photoURL]];
-    [self startDownloadImage];
 }
 
--(void)setPhotoImage:(UIImage *)photoImage {
-    _photoImage = photoImage;
-    self.imageView.image = self.photoImage;
-    [self.downloadIndicator stopAnimating];
+- (void)viewWillAppear:(BOOL)animated {
+        [self createPhotoImageView];
 }
-
 
 -(void)createPhotoImageView {
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.view.frame.size.width, self.view.frame.size.height / 2.0)];
-    self.imageView.image = self.photoImage;
+    CGFloat navigationBatHeight = self.navigationController.navigationBar.frame.size.height;
+    CGFloat koefForScale = self.view.frame.size.width / self.image.size.width ;
+    CGFloat yFromNavigationBarAndStatusBar = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f,
+                                                                   yFromNavigationBarAndStatusBar,
+                                                                   self.view.frame.size.width,
+                                                                   navigationBatHeight + self.image.size.height * koefForScale)];
+    self.imageView.image = self.image;
     [self.view addSubview:self.imageView];
 }
 
--(void)startDownloadImage {
-    
-    self.photoImage = nil;
-    if (self.photoURL) {
-        [self.downloadIndicator startAnimating];
-        NSURLRequest *request = [NSURLRequest requestWithURL:self.photoURL];
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-        NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *localfile, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            if (!error) {
-                if ([request.URL isEqual:self.photoURL]) {
-                    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:localfile]];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        self.photoImage = image;
-                    });
-                }
-            }
-        }];
-        [task resume];
-    }
-    
-}
 
+
+// loading photo from url
+//-(void)startDownloadImage {
+//    self.photoImage = nil;
+//    if (self.photoURL) {
+//        NSURLRequest *request = [NSURLRequest requestWithURL:self.photoURL];
+//        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+//        NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+//        NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *localfile, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//            if (!error) {
+//                if ([request.URL isEqual:self.photoURL]) {
+//                    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:localfile]];
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        self.photoImage = image;
+//                    });
+//                }
+//            }
+//        }];
+//        [task resume];
+//    }
+//}
 
 @end

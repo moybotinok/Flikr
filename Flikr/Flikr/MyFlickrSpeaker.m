@@ -8,20 +8,23 @@
 #import <UIKit/UIKit.h>
 #import "MyFlickrSpeaker.h"
 #import "FlickrKit.h"
+#import "CollectionViewController.h"
 
 @interface MyFlickrSpeaker ()
 
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSMutableArray *photoURLs;
 @property (strong, nonatomic) NSDictionary *all;
+@property (strong, nonatomic) CollectionViewController *collectionViewController;
 @end
 
 @implementation MyFlickrSpeaker
 
--(instancetype)init {
+-(instancetype)initWithViewController:(CollectionViewController *)vc {
     self = [super init];
     if (self) {
         [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"4df385f777a0ae9361158cc0a970ab67" sharedSecret:@"f1dea1e18baeb19a"];
+        self.collectionViewController = vc;
     }
     return self;
 }
@@ -59,8 +62,41 @@
     while (dispatch_semaphore_wait(sema, DISPATCH_TIME_NOW)) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:100]];
     }
+    self.photoURLs = [photoURLs copy];
+    [self allPhotos];
     return photoURLs;
 }
+
+-(void)allPhotos {
+    //    NSMutableArray *allPhotos = [[NSMutableArray alloc] init];
+    //    int i = 0;
+    //    for (NSURL *url in self.allPhotoURLs) {
+    //        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+    //        NSLog(@"%@", NSStringFromCGSize(image.size));
+    //        [allPhotos addObject:image];
+    //        i++;
+    //        if (i>7) break;
+    //    }
+    
+    
+        __block UIImage *photo = nil;
+        dispatch_queue_t gettingPhoto = dispatch_queue_create("getphoto", NULL);
+        dispatch_async(gettingPhoto, ^{
+            
+            for (NSURL *url in self.photoURLs) {
+                photo = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.collectionViewController.allPhotos addObject:photo];
+                    NSLog(@"photo +");
+                });
+            }
+        });
+
+    
+    
+}
+
 
 
 //- (void)getPhotoFromFlickr:(UIImageView *)imageView {

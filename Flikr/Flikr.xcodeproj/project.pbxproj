@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		278737261DDC50F10015D594 /* MyCustomSegueToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 278737251DDC50F10015D594 /* MyCustomSegueToImage.m */; };
 		278E59531DDAEBA000779482 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E59521DDAEBA000779482 /* ImageViewController.m */; };
 		278E59561DDAED5500779482 /* MyFlickrSpeaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E59551DDAED5500779482 /* MyFlickrSpeaker.m */; };
 		278E59591DDAF6C000779482 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E59581DDAF6C000779482 /* CollectionViewController.m */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		278737241DDC50F10015D594 /* MyCustomSegueToImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomSegueToImage.h; sourceTree = "<group>"; };
+		278737251DDC50F10015D594 /* MyCustomSegueToImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomSegueToImage.m; sourceTree = "<group>"; };
 		278E59511DDAEBA000779482 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		278E59521DDAEBA000779482 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		278E59541DDAED5500779482 /* MyFlickrSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFlickrSpeaker.h; sourceTree = "<group>"; };
@@ -72,6 +75,8 @@
 				278E595B1DDB0DE600779482 /* PhotoCell.m */,
 				278E596A1DDB4BA200779482 /* LeftMenuViewController.h */,
 				278E596B1DDB4BA200779482 /* LeftMenuViewController.m */,
+				278737241DDC50F10015D594 /* MyCustomSegueToImage.h */,
+				278737251DDC50F10015D594 /* MyCustomSegueToImage.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -83,6 +88,13 @@
 				278E59681DDB417300779482 /* SWRevealViewController.m */,
 			);
 			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		279A73C31DDDD861007796E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		27F5E6E01DD9E72A00179F1D = {
@@ -106,6 +118,7 @@
 		27F5E6EB1DD9E72A00179F1D /* Flikr */ = {
 			isa = PBXGroup;
 			children = (
+				279A73C31DDDD861007796E7 /* Model */,
 				278E59661DDB415000779482 /* SWRevealViewController */,
 				278E59541DDAED5500779482 /* MyFlickrSpeaker.h */,
 				278E59551DDAED5500779482 /* MyFlickrSpeaker.m */,
@@ -271,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				278E59531DDAEBA000779482 /* ImageViewController.m in Sources */,
+				278737261DDC50F10015D594 /* MyCustomSegueToImage.m in Sources */,
 				278E59591DDAF6C000779482 /* CollectionViewController.m in Sources */,
 				27F5E6F11DD9E72A00179F1D /* AppDelegate.m in Sources */,
 				278E59691DDB417300779482 /* SWRevealViewController.m in Sources */,
