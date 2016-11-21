@@ -634,8 +634,6 @@ const int FrontViewPositionNone = 0xff;
         [self _initDefaultProperties];
         [self _performTransitionOperation:SWRevealControllerOperationReplaceRearController withViewController:rearViewController animated:NO];
         [self _performTransitionOperation:SWRevealControllerOperationReplaceFrontController withViewController:frontViewController animated:NO];
-        //self.view.backgroundColor = [UIColor colorWithWhite:<#(CGFloat)#> alpha:<#(CGFloat)#>];
-        
     }
     return self;
 }
@@ -843,11 +841,18 @@ const int FrontViewPositionNone = 0xff;
 - (void)revealToggleAnimated:(BOOL)animated
 {
     FrontViewPosition toggledFrontViewPosition = FrontViewPositionLeft;
+    
+    UIViewController *vc = nil;
+    if ([self.frontViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navigationController = (UINavigationController *)self.frontViewController;
+        vc = navigationController.viewControllers.firstObject;
+    }
+    
     if (_frontViewPosition <= FrontViewPositionLeft) {
         toggledFrontViewPosition = FrontViewPositionRight;
-        //self.frontViewController.view.userInteractionEnabled = NO;
+        vc.view.userInteractionEnabled = NO;
     } else {
-        //self.frontViewController.view.userInteractionEnabled = YES;
+        vc.view.userInteractionEnabled = YES;
     }
 
     

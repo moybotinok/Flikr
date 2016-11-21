@@ -19,6 +19,7 @@
 
 @property (nonatomic) NSUInteger currentIndex;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *revialButton;
+@property (strong, nonatomic) MyFlickrSpeaker *myFlickerSpeaker;
 
 @end
 
@@ -29,24 +30,18 @@ static NSString * const reuseIdentifier = @"PhotoCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setRevialButtonOn];
-    self.photoURLs =  [NSMutableArray array];//[[myFlickerSpeaker allPhotoURLs] copy];
-    
+    self.photoURLs =  [NSMutableArray array];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
     self.allPhotos = [NSMutableArray array];
-    MyFlickrSpeaker *myFlickerSpeaker = [[MyFlickrSpeaker alloc] initWithViewController:self];
-    
-    
-    
-    //self.allPhotos = [[myFlickerSpeaker allPhotos] copy];
-    // Uncomment the following line to preserve selection between presentations
-    //self.clearsSelectionOnViewWillAppear = NO;
+    self.myFlickerSpeaker = [[MyFlickrSpeaker alloc] initWithViewController:self];
+    self.flickrTag = @"cat";
 }
+
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self addToolbar];
 }
+
 
 -(void)setRevialButtonOn {
     SWRevealViewController *revealViewController = self.revealViewController;
@@ -59,6 +54,16 @@ static NSString * const reuseIdentifier = @"PhotoCell";
     }
 }
 
+-(void)setFlickrTag:(NSString *)flickrTag {
+    if (_flickrTag != flickrTag) {
+        _flickrTag = flickrTag;
+        [self.allPhotos removeAllObjects];
+        [self.collectionView reloadData];
+        [self.myFlickerSpeaker allPhotoURLsForTag:flickrTag];
+    }
+    NSLog(@"TAG = %@", self.flickrTag);
+    
+}
 
 -(void)addToolbar {
     UIToolbar *toolbar = [[UIToolbar alloc] init];
@@ -92,15 +97,24 @@ static NSString * const reuseIdentifier = @"PhotoCell";
 -(void)addNewPhoto:(UIImage *)photo {
     [self.allPhotos addObject:photo];
     
-    NSArray *array = [self.collectionView indexPathsForVisibleItems];
-    NSIndexPath *index =  [array firstObject];
-    NSInteger x = index.row;
-    index = [array lastObject];
-    NSInteger y = index.row;
-    NSInteger a = self.allPhotos.count;
+    NSArray *arrayOfIndexPath = [self.collectionView indexPathsForVisibleItems];
+    NSMutableArray *arrayOfRows = [NSMutableArray new];
+    for (NSIndexPath *indexPath in arrayOfIndexPath) {
+        NSNumber *x = [NSNumber numberWithUnsignedInteger:indexPath.row];
+        [arrayOfRows addObject:x];
+    }
+    [arrayOfRows sortUsingSelector:@selector(compare:)];
     
-    if ( (a >= x) && (a <= y) ){
-        [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.allPhotos.count inSection:0]]];
+    //NSLog(@"%@",arrayOfRows);
+    
+    NSInteger a = [arrayOfRows.firstObject integerValue];
+    NSInteger b = [arrayOfRows.lastObject integerValue];
+    
+    
+    NSInteger x = self.allPhotos.count-1;
+    
+    if ( (a <= x) && (x <= b) ){
+        [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:x inSection:0]]];
     }
 }
 
@@ -154,7 +168,7 @@ static NSString * const reuseIdentifier = @"PhotoCell";
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.bounds];
     UIImage *image = [UIImage new];
     if (indexPath.row < self.allPhotos.count) {
-        image = self.allPhotos[indexPath.row]; //[UIImage imageWithData:[NSData dataWithContentsOfURL:imageURL]];
+        image = self.allPhotos[indexPath.row];
         imageView.image = image;
     } else {
         image = [UIImage imageNamed:@"menu"];
