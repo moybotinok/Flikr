@@ -10,11 +10,11 @@
 
 @interface CollectionViewController : UICollectionViewController
 
-@property (strong, nonatomic) NSMutableArray *photoURLs;
+//@property (strong, nonatomic) NSMutableArray *photoURLs;
 @property (strong, nonatomic) NSMutableArray *allPhotos;
 @property (strong, nonatomic) NSString *flickrTag;
 
 -(void)addNewPhoto:(UIImage *)photo;
--(void)updateURLs: (NSArray *)newURLs;
+//-(void)updateURLs: (NSArray *)newURLs;
 
 @end

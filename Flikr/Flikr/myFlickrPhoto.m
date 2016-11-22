@@ -10,14 +10,19 @@
 
 @implementation myFlickrPhoto
 
--(instancetype)initWithTitle:(NSString *)title {
+-(instancetype)initWithURL:(NSURL *)url title:(NSString *)title {
     self = [super init];
     if (self) {
+        self.url = url;
         self.title = title;
         self.faivorite = NO;
         self.image = nil;
     }
     return self;
+}
+
+-(void)setImage:(UIImage *)image {
+    _image = image;
 }
 
 

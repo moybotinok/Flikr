@@ -9,6 +9,7 @@
 #import "MyFlickrSpeaker.h"
 #import "FlickrKit.h"
 #import "CollectionViewController.h"
+#import "PhotoManager.h"
 
 @interface MyFlickrSpeaker ()
 
@@ -25,7 +26,6 @@
     if (self) {
         [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"4df385f777a0ae9361158cc0a970ab67" sharedSecret:@"f1dea1e18baeb19a"];
         self.collectionViewController = vc;
-        //[self allPhotoURLs];
     }
     return self;
 }
@@ -37,29 +37,44 @@
     FlickrKit *fk = [FlickrKit sharedFlickrKit];
     //FKFlickrInterestingnessGetList *interesting = [[FKFlickrInterestingnessGetList alloc] init];
     
-    //@"title": @"Test Photo", @"description": @"A Test Photo via FlickrKitDemo", @"is_public": @"0", @"is_friend": @"0", @"is_family": @"0", @"hidden": @"2"
-    NSMutableDictionary *uploadArgs = [[NSMutableDictionary alloc] initWithDictionary:  @{@"tags": @"cat", @"per_page": @"20"}];// @"user_id": self.userID, @"per_page": @"15"
+    NSMutableDictionary *uploadArgs = [[NSMutableDictionary alloc] initWithDictionary:  @{@"tags": @"cat", @"per_page": @"100"}];
     if (tag) {
         [uploadArgs setValue:tag forKey:@"tags"];
+    } else {
+        tag = @"cat";
     }
     
+    __block NSURL *url;
+    __block NSString *photoTitle;
+    __block UIImage *image;
     //[fk call:interesting completion:^(NSDictionary *response, NSError *error) {
     [[FlickrKit sharedFlickrKit] call:@"flickr.photos.search" args:uploadArgs maxCacheAge:FKDUMaxAgeOneHour completion:^(NSDictionary *response, NSError *error) {
         // Note this is not the main thread!
         if (response) {
             // NSMutableArray *photoURLs = [NSMutableArray array];
+            
             for (NSDictionary *photoData in [response valueForKeyPath:@"photos.photo"]) {
-                NSURL *url = [fk photoURLForSize:FKPhotoSizeSmall240 fromPhotoDictionary:photoData];
-                //NSString *phototitle = [photoData valueForKey:@"title"];
+                url = [fk photoURLForSize:FKPhotoSizeSmall240 fromPhotoDictionary:photoData];
+                photoTitle = [photoData valueForKey:@"title"]; //id
+                image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
                 [photoURLs addObject:url];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    PhotoManager *photoManager = [PhotoManager sharedInstance];
+                    [photoManager addPhotoWithURL:url title:photoTitle tag:tag image:image];
+                    
+                    NSArray *array = [photoManager takeAllPhotosForTag:tag];
+                    [self.collectionViewController addNewPhoto:array.lastObject];
+                });
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Any GUI related operations here
-                [self.collectionViewController updateURLs:photoURLs];
+                //[self.collectionViewController updateURLs:photoURLs];
+                
                 //                    if (self.photoURLs.count > 0) {
                 //                        NSURL *url = self.photoURLs[0];
                 //                        self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
                 // }
+                
                 dispatch_semaphore_signal(sema);
             });
         } else {
@@ -69,11 +84,11 @@
     }];
 
     
-    while (dispatch_semaphore_wait(sema, DISPATCH_TIME_NOW)) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:100]];
-    }
+//    while (dispatch_semaphore_wait(sema, DISPATCH_TIME_NOW)) {
+//        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:100]];
+//    }
     self.photoURLs = [photoURLs copy];
-    [self allPhotos];
+   // [self allPhotos];
 }
 
 -(void)allPhotos {
@@ -97,6 +112,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     //[self.collectionViewController.allPhotos addObject:photo];
                     [self.collectionViewController addNewPhoto:photo];
+                    //[[PhotoManager sharedInstance] ];
                     NSLog(@"photo +");
                 });
             }

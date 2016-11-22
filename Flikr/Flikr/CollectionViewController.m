@@ -13,6 +13,8 @@
 #import "SWRevealViewController.h"
 #import "MyCustomSegueToImage.h"
 #import "myFlickrPhoto.h"
+#import "PhotoManager.h"
+#import "myFlickrPhoto.h"
 
 @interface CollectionViewController ()
 
@@ -20,6 +22,8 @@
 @property (nonatomic) NSUInteger currentIndex;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *revialButton;
 @property (strong, nonatomic) MyFlickrSpeaker *myFlickerSpeaker;
+@property (strong, nonatomic) PhotoManager *photoManager;
+@property (nonatomic) BOOL isFavorute;
 
 @end
 
@@ -29,12 +33,14 @@ static NSString * const reuseIdentifier = @"PhotoCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.isFavorute = FALSE;
     [self setRevialButtonOn];
-    self.photoURLs =  [NSMutableArray array];
+    //self.photoURLs =  [NSMutableArray array];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     self.allPhotos = [NSMutableArray array];
     self.myFlickerSpeaker = [[MyFlickrSpeaker alloc] initWithViewController:self];
     self.flickrTag = @"cat";
+    self.photoManager = [PhotoManager sharedInstance];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -47,7 +53,6 @@ static NSString * const reuseIdentifier = @"PhotoCell";
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
     {
-        //self.revealViewController.frontViewController.view.userInteractionEnabled = NO;
         [self.revialButton setTarget: self.revealViewController];
         [self.revialButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
@@ -55,11 +60,17 @@ static NSString * const reuseIdentifier = @"PhotoCell";
 }
 
 -(void)setFlickrTag:(NSString *)flickrTag {
+    self.isFavorute = NO;
     if (_flickrTag != flickrTag) {
         _flickrTag = flickrTag;
         [self.allPhotos removeAllObjects];
         [self.collectionView reloadData];
-        [self.myFlickerSpeaker allPhotoURLsForTag:flickrTag];
+        NSMutableArray *allPhotosForCurrentTag = [self.photoManager.allPhpotosOfAllTags objectForKey:flickrTag];
+        if (allPhotosForCurrentTag.count == 0) {
+            [self.myFlickerSpeaker allPhotoURLsForTag:flickrTag];
+        } else {
+            self.allPhotos = allPhotosForCurrentTag;
+        }
     }
     NSLog(@"TAG = %@", self.flickrTag);
     
@@ -88,39 +99,29 @@ static NSString * const reuseIdentifier = @"PhotoCell";
 
 -(void)toolBarDidSelectItemPhoto:(id)sender {
     
+    self.isFavorute = NO;
+    self.allPhotos = [self.photoManager takeAllPhotosForTag:self.flickrTag];
+    [self.collectionView reloadData];
+    
 }
 
 -(void)toolBarDidSelectItemFaivorite:(id)sender {
-    
+    self.isFavorute = YES;
+    self.allPhotos = [self.photoManager takeAllFavoritePhotosForTag:self.flickrTag];
+    [self.collectionView reloadData];
 }
 
 -(void)addNewPhoto:(UIImage *)photo {
     [self.allPhotos addObject:photo];
-    
-    NSArray *arrayOfIndexPath = [self.collectionView indexPathsForVisibleItems];
-    NSMutableArray *arrayOfRows = [NSMutableArray new];
-    for (NSIndexPath *indexPath in arrayOfIndexPath) {
-        NSNumber *x = [NSNumber numberWithUnsignedInteger:indexPath.row];
-        [arrayOfRows addObject:x];
-    }
-    [arrayOfRows sortUsingSelector:@selector(compare:)];
-    
-    //NSLog(@"%@",arrayOfRows);
-    
-    NSInteger a = [arrayOfRows.firstObject integerValue];
-    NSInteger b = [arrayOfRows.lastObject integerValue];
-    
-    
     NSInteger x = self.allPhotos.count-1;
     
-    if ( (a <= x) && (x <= b) ){
+    //NSInteger i = [self.collectionView numberOfItemsInSection:0];
+    
+    if ([self.collectionView numberOfItemsInSection:0] > x) {
         [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:x inSection:0]]];
+    } else {
+        [self.collectionView reloadData];
     }
-}
-
--(void)updateURLs: (NSArray *)newURLs {
-    self.photoURLs = [newURLs copy];
-    [self.collectionView reloadData];
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -130,48 +131,27 @@ static NSString * const reuseIdentifier = @"PhotoCell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (self.photoURLs.count > 10) {
-        return self.photoURLs.count;
-    } else return 10;
+    if (self.allPhotos.count < 100 && self.isFavorute == NO) {
+        return 100;
+    } else {
+        return self.allPhotos.count;
+    }
 }
-
-
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    //PhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[PhotoCell alloc] init];
-    }
-    // Configure the cell
-    
-    //UIActivityIndicatorView *spiner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    //spiner.hidden = NO;
-    
 
-    
-//    NSURL *url = self.photoURLs[indexPath.row];
-//    __block UIImage *photo = nil;
-//    dispatch_queue_t gettingPhoto = dispatch_queue_create("getphoto", NULL);
-//    dispatch_async(gettingPhoto, ^{
-//        photo = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [imageView setImage:photo];
-//            [cell addSubview:imageView];
-//            //spiner.hidden = YES;
-//        });
-//        
-//    });
-    
-
-//
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.bounds];
     UIImage *image = [UIImage new];
     if (indexPath.row < self.allPhotos.count) {
-        image = self.allPhotos[indexPath.row];
+        myFlickrPhoto *photo = self.allPhotos[indexPath.row];
+        image =photo.image;
+        
         imageView.image = image;
+        imageView = [self prepareImageView:imageView withImage:image];
+        
     } else {
-        image = [UIImage imageNamed:@"menu"];
+        image = [UIImage imageNamed:@"questionMark"];
     }
     
     if (cell.subviews.count == 2) {
@@ -183,20 +163,30 @@ static NSString * const reuseIdentifier = @"PhotoCell";
     return cell;
 }
 
+-(UIImageView *)prepareImageView:(UIImageView *)imageView withImage:(UIImage *)image {
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.clipsToBounds = YES;
+    return imageView;
+}
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"toImage"]) {
         if ([segue.destinationViewController isKindOfClass:[ImageViewController class]]) {
             ImageViewController *vc = segue.destinationViewController;
-            UIImage *sendingImage = self.allPhotos[self.currentIndex];
-            vc.image = sendingImage;//self.allPhotos[self.currentIndex];
-            ///
+            myFlickrPhoto *photo = self.allPhotos[self.currentIndex];
+            UIImage *sendingImage = photo.image;
+            vc.image = sendingImage;
+            
+            vc.photo = photo;
+            
             if (![segue isKindOfClass:[MyCustomSegueToImage class]]) {
                 return;
             }
             MyCustomSegueToImage *imageSegue = (MyCustomSegueToImage *)segue;
 
             UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath: [NSIndexPath indexPathForRow:self.currentIndex inSection:0]];
-            imageSegue.transitionImage =  self.allPhotos[self.currentIndex];
+            imageSegue.transitionImage =  photo.image;
             
             CGFloat navigationBatHeight = self.navigationController.navigationBar.frame.size.height;
             CGFloat k = self.view.frame.size.width / sendingImage.size.width ;
@@ -215,7 +205,6 @@ static NSString * const reuseIdentifier = @"PhotoCell";
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.currentIndex = indexPath.item;
-    
     [self performSegueWithIdentifier:@"toImage" sender:self];
 }
 

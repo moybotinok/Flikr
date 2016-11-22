@@ -37,7 +37,7 @@
 
 - (void) perform {
     
-    CGFloat duraction = 0.5f;
+    CGFloat duraction = 0.3f;
     
     UIViewController *destinationController = (UIViewController *)[self destinationViewController];
     UIViewController *sourceViewController = (UIViewController *)[self sourceViewController];

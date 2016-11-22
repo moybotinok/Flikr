@@ -11,10 +11,13 @@
 
 @interface myFlickrPhoto : NSObject
 
+@property (strong, nonatomic) NSURL *url;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) UIImage *image;
 @property (nonatomic) BOOL faivorite;
 
--(instancetype)initWithTitle:(NSString *)title;
+-(instancetype)initWithURL:(NSURL *)url
+                     title:(NSString *)title;
+
 
 @end

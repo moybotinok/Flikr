@@ -7,8 +7,11 @@
 //
 
 #import "ImageViewController.h"
+#import "myFlickrPhoto.h"
 
 @interface ImageViewController ()
+
+@property (weak, nonatomic) UIBarButtonItem *itemFavorite;
 
 @end
 
@@ -21,8 +24,39 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self createPhotoImageView];
+    self.title = self.photo.title;
+    [self createButtonFavorite];
+    [self updateView];
 }
 
+-(void)createButtonFavorite {
+    
+    UIBarButtonItem * itemFavorite = [[UIBarButtonItem alloc] initWithTitle:@"+add"
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(didSelectButtonFavorite)];
+
+    self.navigationController.topViewController.navigationItem.rightBarButtonItem = itemFavorite;
+    self.itemFavorite = itemFavorite;
+    self.itemFavorite.enabled=TRUE;
+}
+
+-(void)didSelectButtonFavorite {
+    self.photo.faivorite = !self.photo.faivorite;
+    [self  updateView];
+    
+}
+
+-(void)updateView {
+    if (self.photo.faivorite) {
+        self.view.backgroundColor = [UIColor yellowColor];
+        self.itemFavorite.title = @"-del";
+    } else {
+        self.view.backgroundColor = [UIColor whiteColor];
+        self.itemFavorite.title = @"+add";
+    }
+    
+}
 
 -(void)createPhotoImageView {
     CGFloat navigationBatHeight = self.navigationController.navigationBar.frame.size.height;

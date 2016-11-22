@@ -9,6 +9,7 @@
 #import "LeftMenuViewController.h"
 #import "SWRevealViewController.h"
 #import "CollectionViewController.h"
+#import "PhotoManager.h"
 
 
 @interface LeftMenuViewController ()
@@ -26,9 +27,7 @@
 }
 
 -(void)setFlickrTags {
-    self.flickrTags = @[@"cat",
-                        @"dog",
-                        @"spring"];
+    self.flickrTags = [[PhotoManager sharedInstance] flickrTags];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
