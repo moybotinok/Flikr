@@ -35,7 +35,6 @@ static NSString * const reuseIdentifier = @"PhotoCell";
     [super viewDidLoad];
     self.isFavorute = FALSE;
     [self setRevialButtonOn];
-    //self.photoURLs =  [NSMutableArray array];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     self.allPhotos = [NSMutableArray array];
     self.myFlickerSpeaker = [[MyFlickrSpeaker alloc] initWithViewController:self];
@@ -67,9 +66,9 @@ static NSString * const reuseIdentifier = @"PhotoCell";
         [self.collectionView reloadData];
         NSMutableArray *allPhotosForCurrentTag = [self.photoManager.allPhpotosOfAllTags objectForKey:flickrTag];
         if (allPhotosForCurrentTag.count == 0) {
-            [self.myFlickerSpeaker allPhotoURLsForTag:flickrTag];
+            [self.myFlickerSpeaker allPhotoForTag:flickrTag];
         } else {
-            self.allPhotos = allPhotosForCurrentTag;
+            self.allPhotos = [allPhotosForCurrentTag mutableCopy];
         }
     }
     NSLog(@"TAG = %@", self.flickrTag);
@@ -100,27 +99,26 @@ static NSString * const reuseIdentifier = @"PhotoCell";
 -(void)toolBarDidSelectItemPhoto:(id)sender {
     
     self.isFavorute = NO;
-    self.allPhotos = [self.photoManager takeAllPhotosForTag:self.flickrTag];
+    self.allPhotos = [[self.photoManager takeAllPhotosForTag:self.flickrTag] mutableCopy];
     [self.collectionView reloadData];
     
 }
 
 -(void)toolBarDidSelectItemFaivorite:(id)sender {
     self.isFavorute = YES;
-    self.allPhotos = [self.photoManager takeAllFavoritePhotosForTag:self.flickrTag];
+    self.allPhotos = [[self.photoManager takeAllFavoritePhotosForTag:self.flickrTag] mutableCopy];
     [self.collectionView reloadData];
 }
 
--(void)addNewPhoto:(UIImage *)photo {
-    [self.allPhotos addObject:photo];
-    NSInteger x = self.allPhotos.count-1;
-    
-    //NSInteger i = [self.collectionView numberOfItemsInSection:0];
-    
-    if ([self.collectionView numberOfItemsInSection:0] > x) {
-        [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:x inSection:0]]];
-    } else {
-        [self.collectionView reloadData];
+-(void)addNewPhoto:(myFlickrPhoto *)photo withTag:(NSString *)tag {
+    if (tag == self.flickrTag && !self.isFavorute ) {
+        [self.allPhotos addObject:photo];
+        NSInteger x = self.allPhotos.count-1;
+        if ([self.collectionView numberOfItemsInSection:0] > x) {
+            [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:x inSection:0]]];
+        } else {
+            [self.collectionView reloadData];
+        }
     }
 }
 
@@ -151,14 +149,14 @@ static NSString * const reuseIdentifier = @"PhotoCell";
         imageView = [self prepareImageView:imageView withImage:image];
         
     } else {
-        image = [UIImage imageNamed:@"questionMark"];
+        imageView.image = [UIImage imageNamed:@"questionMark"];
     }
     
     if (cell.subviews.count == 2) {
         ((UIImageView *)cell.subviews[1]).image = image;
-    } else {
-        [cell addSubview:imageView];
+        [[cell.subviews lastObject] removeFromSuperview];
     }
+    [cell addSubview:imageView];
     
     return cell;
 }
@@ -169,33 +167,31 @@ static NSString * const reuseIdentifier = @"PhotoCell";
     return imageView;
 }
 
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"toImage"]) {
         if ([segue.destinationViewController isKindOfClass:[ImageViewController class]]) {
             ImageViewController *vc = segue.destinationViewController;
             myFlickrPhoto *photo = self.allPhotos[self.currentIndex];
+            
             UIImage *sendingImage = photo.image;
             vc.image = sendingImage;
             
             vc.photo = photo;
             
-            if (![segue isKindOfClass:[MyCustomSegueToImage class]]) {
-                return;
-            }
-            MyCustomSegueToImage *imageSegue = (MyCustomSegueToImage *)segue;
+            if ([segue isKindOfClass:[MyCustomSegueToImage class]]) {
+                MyCustomSegueToImage *myCustomSegueToImage = (MyCustomSegueToImage *)segue;
 
-            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath: [NSIndexPath indexPathForRow:self.currentIndex inSection:0]];
-            imageSegue.transitionImage =  photo.image;
-            
-            CGFloat navigationBatHeight = self.navigationController.navigationBar.frame.size.height;
-            CGFloat k = self.view.frame.size.width / sendingImage.size.width ;
-            CGFloat y = CGRectGetMaxY(self.navigationController.navigationBar.frame);
-            CGRect cellFrame = cell.frame;
-            CGRect frameInSuperView = [self.collectionView convertRect:cellFrame toView:[self.collectionView superview]];
-            
-            imageSegue.sourceRect = frameInSuperView;
-            imageSegue.destinationRect = CGRectMake(0.f, y, self.view.frame.size.width, navigationBatHeight + sendingImage.size.height * k);
+                UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath: [NSIndexPath indexPathForRow:self.currentIndex inSection:0]];
+                CGRect cellFrame = cell.frame;
+                CGRect cellframeInSuperView = [self.collectionView convertRect:cellFrame toView:[self.collectionView superview]];
+                
+                CGFloat k = self.view.frame.size.width / sendingImage.size.width ;
+                CGFloat y = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+                
+                myCustomSegueToImage.transitionImage =  photo.image;
+                myCustomSegueToImage.sourceRect = cellframeInSuperView;
+                myCustomSegueToImage.destinationRect = CGRectMake(0.f, y, self.view.frame.size.width, sendingImage.size.height * k);
+            }
         }
     }
 }
@@ -204,8 +200,11 @@ static NSString * const reuseIdentifier = @"PhotoCell";
 #pragma mark <UICollectionViewDelegate>
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    self.currentIndex = indexPath.item;
-    [self performSegueWithIdentifier:@"toImage" sender:self];
+    if (self.allPhotos.count > indexPath.item)
+    {
+        self.currentIndex = indexPath.item;
+        [self performSegueWithIdentifier:@"toImage" sender:self];
+    }
 }
 
 @end

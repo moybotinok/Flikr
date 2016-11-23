@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class myFlickrPhoto;
 
 @interface CollectionViewController : UICollectionViewController
 
@@ -14,7 +15,7 @@
 @property (strong, nonatomic) NSMutableArray *allPhotos;
 @property (strong, nonatomic) NSString *flickrTag;
 
--(void)addNewPhoto:(UIImage *)photo;
+-(void)addNewPhoto:(myFlickrPhoto *)photo withTag:(NSString *)tag;
 //-(void)updateURLs: (NSArray *)newURLs;
 
 @end

@@ -20,13 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flikr/MyFlickrSpeaker.m"
-            timestampString = "501503168.127595"
+            timestampString = "501596699.400689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "-allPhotos"
-            landmarkType = "7">
+            startingLineNumber = "115"
+            endingLineNumber = "115">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -36,13 +34,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flikr/MyFlickrSpeaker.m"
-            timestampString = "501503168.127595"
+            timestampString = "501596699.400689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-allPhotos"
-            landmarkType = "7">
+            startingLineNumber = "108"
+            endingLineNumber = "108">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -52,13 +48,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flikr/MyFlickrSpeaker.m"
-            timestampString = "501503168.127595"
+            timestampString = "501596699.400689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "-allPhotos"
-            landmarkType = "7">
+            startingLineNumber = "111"
+            endingLineNumber = "111">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -100,13 +94,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flikr/MyFlickrSpeaker.m"
-            timestampString = "501503168.127595"
+            timestampString = "501596699.400689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "-allPhotos"
-            landmarkType = "7">
+            startingLineNumber = "119"
+            endingLineNumber = "119">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -179,11 +171,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController/SWRevealViewController.m"
-            timestampString = "501414339.322697"
+            timestampString = "501602537.582521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "843"
-            endingLineNumber = "843"
+            startingLineNumber = "844"
+            endingLineNumber = "844"
             landmarkName = "-revealToggleAnimated:"
             landmarkType = "7">
          </BreakpointContent>
@@ -200,7 +192,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
             endingLineNumber = "57"
-            landmarkName = "-allPhotoURLsForTag:"
+            landmarkName = "-allPhotoForTag:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -227,11 +219,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SWRevealViewController/SWRevealViewController.m"
-            timestampString = "501414339.322697"
+            timestampString = "501602537.582521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1890"
-            endingLineNumber = "1890"
+            startingLineNumber = "1891"
+            endingLineNumber = "1891"
             landmarkName = "-perform"
             landmarkType = "7">
          </BreakpointContent>
@@ -248,7 +240,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
             endingLineNumber = "42"
-            landmarkName = "-allPhotoURLsForTag:"
+            landmarkName = "-allPhotoForTag:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -259,11 +251,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flikr/CollectionViewController.m"
-            timestampString = "501506258.998529"
+            timestampString = "501519760.128788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-setFlickrTag:"
             landmarkType = "7">
          </BreakpointContent>
@@ -275,11 +267,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flikr/CollectionViewController.m"
-            timestampString = "501506258.998529"
+            timestampString = "501519760.128788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-setFlickrTag:"
             landmarkType = "7">
          </BreakpointContent>
@@ -312,7 +304,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
-            landmarkName = "-allPhotoURLsForTag:"
+            landmarkName = "-allPhotoForTag:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -323,12 +315,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flikr/MyFlickrSpeaker.m"
-            timestampString = "501503168.127595"
+            timestampString = "501596699.400689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-allPhotoURLsForTag:"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "@implementation MyFlickrSpeaker"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flikr/CollectionViewController.m"
+            timestampString = "501519760.128788"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-setFlickrTag:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -339,12 +347,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flikr/CollectionViewController.m"
-            timestampString = "501510075.961117"
+            timestampString = "501596922.771328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "-collectionView:numberOfItemsInSection:"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -355,12 +363,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flikr/CollectionViewController.m"
-            timestampString = "501510989.240214"
+            timestampString = "501596922.771328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "-addNewPhoto:"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flikr/ImageViewController.m"
+            timestampString = "501524046.134634"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-createPhotoImageView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flikr/MyImageSize.m"
+            timestampString = "501523973.504117"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "+getGoodSizeForImage:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flikr/CollectionViewController.m"
+            timestampString = "501597382.872608"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-addNewPhoto:withTag:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

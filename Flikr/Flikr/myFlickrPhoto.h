@@ -19,5 +19,4 @@
 -(instancetype)initWithURL:(NSURL *)url
                      title:(NSString *)title;
 
-
 @end

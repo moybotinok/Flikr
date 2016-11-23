@@ -13,7 +13,7 @@
         <scene sceneID="mUo-dD-7zc">
             <objects>
                 <collectionViewController id="GjY-Ho-7hK" customClass="CollectionViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Zem-n0-qC4">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Zem-n0-qC4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -35,7 +35,7 @@
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kHs-0K-KH7">
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="identifireCollectionView" id="kHs-0K-KH7">
                             <rect key="frame" x="0.0" y="160" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </collectionReusableView>
@@ -49,7 +49,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="revialButton" destination="imf-BP-x2Z" id="b4x-55-8uN"/>
-                        <segue destination="4V0-P7-nSU" kind="modal" identifier="toImage" customClass="MyCustomSegueToImage" id="Hyd-nV-nZ3"/>
+                        <segue destination="4V0-P7-nSU" kind="show" identifier="toImage" customClass="MyCustomSegueToImage" id="Hyd-nV-nZ3"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXN-OZ-lCr" userLabel="First Responder" sceneMemberID="firstResponder"/>

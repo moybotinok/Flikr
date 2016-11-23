@@ -10,11 +10,8 @@
 
 @interface MyCustomSegueToImage : UIStoryboardSegue
 
-@property(assign, nonatomic) BOOL unwinding;
-
-@property(assign, nonatomic) CGRect sourceRect;
-@property(assign, nonatomic) CGRect destinationRect;
-
+@property(nonatomic) CGRect sourceRect;
+@property(nonatomic) CGRect destinationRect;
 @property(strong, nonatomic) UIImage *transitionImage;
 
 @end

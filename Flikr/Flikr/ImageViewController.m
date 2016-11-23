@@ -8,6 +8,7 @@
 
 #import "ImageViewController.h"
 #import "myFlickrPhoto.h"
+#import "MyImageSize.h"
 
 @interface ImageViewController ()
 
@@ -59,13 +60,16 @@
 }
 
 -(void)createPhotoImageView {
-    CGFloat navigationBatHeight = self.navigationController.navigationBar.frame.size.height;
+    //CGFloat navigationBatHeight = self.navigationController.navigationBar.frame.size.height;
     CGFloat koefForScale = self.view.frame.size.width / self.image.size.width ;
     CGFloat yFromNavigationBarAndStatusBar = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    
+    //CGRect i = [MyImageSize getGoodSizeForImage:self.image];
+    
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f,
                                                                    yFromNavigationBarAndStatusBar,
                                                                    self.view.frame.size.width,
-                                                                   navigationBatHeight + self.image.size.height * koefForScale)];
+                                                                   self.image.size.height * koefForScale)];
     self.imageView.image = self.image;
     [self.view addSubview:self.imageView];
 }
