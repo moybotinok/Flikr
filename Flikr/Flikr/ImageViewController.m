@@ -18,16 +18,12 @@
 
 @implementation ImageViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self createPhotoImageView];
-    self.title = self.photo.title;
     [self createButtonFavorite];
+    [self createPhotoImageView];
     [self updateView];
+    self.title = self.photo.title;
 }
 
 -(void)createButtonFavorite {
@@ -36,16 +32,13 @@
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self
                                                                     action:@selector(didSelectButtonFavorite)];
-
     self.navigationController.topViewController.navigationItem.rightBarButtonItem = itemFavorite;
     self.itemFavorite = itemFavorite;
-    self.itemFavorite.enabled=TRUE;
 }
 
 -(void)didSelectButtonFavorite {
     self.photo.faivorite = !self.photo.faivorite;
-    [self  updateView];
-    
+    [self updateView];
 }
 
 -(void)updateView {
@@ -56,27 +49,19 @@
         self.view.backgroundColor = [UIColor whiteColor];
         self.itemFavorite.title = @"+add";
     }
-    
 }
 
 -(void)createPhotoImageView {
-    //CGFloat navigationBatHeight = self.navigationController.navigationBar.frame.size.height;
-    CGFloat koefForScale = self.view.frame.size.width / self.image.size.width ;
-    CGFloat yFromNavigationBarAndStatusBar = CGRectGetMaxY(self.navigationController.navigationBar.frame);
-    
-    //CGRect i = [MyImageSize getGoodSizeForImage:self.image];
-    
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f,
-                                                                   yFromNavigationBarAndStatusBar,
-                                                                   self.view.frame.size.width,
-                                                                   self.image.size.height * koefForScale)];
-    self.imageView.image = self.image;
-    [self.view addSubview:self.imageView];
+    UIImage *image = self.photo.image;
+    CGRect rectForImage = [MyImageSize getGoodSizeForImage:image
+                                          inViewController:self];
+    UIImageView* imageView = [[UIImageView alloc] initWithFrame:rectForImage];
+    imageView.image = image;
+    [self.view addSubview:imageView];
 }
 
 
-
-// loading photo from url
+//      loading photo from url
 //-(void)startDownloadImage {
 //    self.photoImage = nil;
 //    if (self.photoURL) {

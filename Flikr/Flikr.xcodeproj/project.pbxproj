@@ -12,7 +12,6 @@
 		278E59531DDAEBA000779482 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E59521DDAEBA000779482 /* ImageViewController.m */; };
 		278E59561DDAED5500779482 /* MyFlickrSpeaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E59551DDAED5500779482 /* MyFlickrSpeaker.m */; };
 		278E59591DDAF6C000779482 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E59581DDAF6C000779482 /* CollectionViewController.m */; };
-		278E595C1DDB0DE600779482 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E595B1DDB0DE600779482 /* PhotoCell.m */; };
 		278E59691DDB417300779482 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E59681DDB417300779482 /* SWRevealViewController.m */; };
 		278E596C1DDB4BA200779482 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E596B1DDB4BA200779482 /* LeftMenuViewController.m */; };
 		2796CAC51DE49CAA00CB72E0 /* MyImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 2796CAC41DE49CAA00CB72E0 /* MyImageSize.m */; };
@@ -37,8 +36,6 @@
 		278E59551DDAED5500779482 /* MyFlickrSpeaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFlickrSpeaker.m; sourceTree = "<group>"; };
 		278E59571DDAF6C000779482 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		278E59581DDAF6C000779482 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
-		278E595A1DDB0DE600779482 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
-		278E595B1DDB0DE600779482 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		278E59671DDB417300779482 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = SWRevealViewController/SWRevealViewController.h; sourceTree = SOURCE_ROOT; };
 		278E59681DDB417300779482 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = SWRevealViewController/SWRevealViewController.m; sourceTree = SOURCE_ROOT; };
 		278E596A1DDB4BA200779482 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
@@ -80,8 +77,6 @@
 				278E59521DDAEBA000779482 /* ImageViewController.m */,
 				278E59571DDAF6C000779482 /* CollectionViewController.h */,
 				278E59581DDAF6C000779482 /* CollectionViewController.m */,
-				278E595A1DDB0DE600779482 /* PhotoCell.h */,
-				278E595B1DDB0DE600779482 /* PhotoCell.m */,
 				278E596A1DDB4BA200779482 /* LeftMenuViewController.h */,
 				278E596B1DDB4BA200779482 /* LeftMenuViewController.m */,
 				278737241DDC50F10015D594 /* MyCustomSegueToImage.h */,
@@ -146,7 +141,6 @@
 				279A73C31DDDD861007796E7 /* Model */,
 				278E59501DDAEB5900779482 /* Controllers */,
 				27F5E6F51DD9E72A00179F1D /* Main.storyboard */,
-				27F5E6F81DD9E72A00179F1D /* Flikr.xcdatamodeld */,
 				278E59661DDB415000779482 /* SWRevealViewController */,
 				27F5E6EC1DD9E72A00179F1D /* Supporting Files */,
 			);
@@ -156,6 +150,7 @@
 		27F5E6EC1DD9E72A00179F1D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				27F5E6F81DD9E72A00179F1D /* Flikr.xcdatamodeld */,
 				27F5E6EF1DD9E72A00179F1D /* AppDelegate.h */,
 				27F5E6F01DD9E72A00179F1D /* AppDelegate.m */,
 				27F5E7001DD9E72A00179F1D /* Info.plist */,
@@ -314,7 +309,6 @@
 				278E59691DDB417300779482 /* SWRevealViewController.m in Sources */,
 				278E596C1DDB4BA200779482 /* LeftMenuViewController.m in Sources */,
 				2796CAC51DE49CAA00CB72E0 /* MyImageSize.m in Sources */,
-				278E595C1DDB0DE600779482 /* PhotoCell.m in Sources */,
 				27F5E6FA1DD9E72A00179F1D /* Flikr.xcdatamodeld in Sources */,
 				278E59561DDAED5500779482 /* MyFlickrSpeaker.m in Sources */,
 				279E7DE81DE3335700433AF8 /* PhotoManager.m in Sources */,

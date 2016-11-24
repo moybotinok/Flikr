@@ -13,7 +13,7 @@
 
 @interface MyFlickrSpeaker ()
 
-@property (strong, nonatomic) CollectionViewController *collectionViewController;
+@property (weak, nonatomic) CollectionViewController *collectionViewController;
 
 @end
 
@@ -29,24 +29,24 @@
 }
 
 -(void)allPhotoForTag:(NSString *)tag {
-    
     FlickrKit *fk = [FlickrKit sharedFlickrKit];
     if (!tag) {
-        tag = @"cat";
+        tag = [[PhotoManager sharedInstance].flickrTags firstObject];
+        if (!tag) {
+            tag = @"cat"; // that would not have happened, load cats!
+        }
     }
-    NSMutableDictionary *uploadArgs = [[NSMutableDictionary alloc] initWithDictionary:  @{@"tags": tag, @"per_page": @"100"}];
-    __block NSURL *url;
-    __block NSString *photoTitle;
-    __block UIImage *image;
+    NSString *per_page = [NSString stringWithFormat:@"%d",COUNT_OF_PHOTOS_IN_VIEW];
+    NSMutableDictionary *uploadArgs = [[NSMutableDictionary alloc] initWithDictionary:  @{@"tags": tag, @"per_page": per_page}];
     [[FlickrKit sharedFlickrKit] call:@"flickr.photos.search"
                                  args:uploadArgs
                           maxCacheAge:FKDUMaxAgeOneHour
                            completion:^(NSDictionary *response, NSError *error) {
         if (response) {
             for (NSDictionary *photoData in [response valueForKeyPath:@"photos.photo"]) {
-                url = [fk photoURLForSize:FKPhotoSizeSmall240 fromPhotoDictionary:photoData];
-                photoTitle = [photoData valueForKey:@"title"];
-                image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+                NSURL * url = [fk photoURLForSize:FKPhotoSizeSmall240 fromPhotoDictionary:photoData];
+                NSString * photoTitle = [photoData valueForKey:@"title"];
+                UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     PhotoManager *photoManager = [PhotoManager sharedInstance];
                     [photoManager addPhotoWithURL:url

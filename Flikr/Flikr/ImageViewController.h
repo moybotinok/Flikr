@@ -12,8 +12,6 @@
 
 @interface ImageViewController : UIViewController
 
-@property (strong, nonatomic) UIImage *image;
-@property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) myFlickrPhoto *photo;
 
 @end

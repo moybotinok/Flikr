@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 @class myFlickrPhoto;
 
+#define COUNT_OF_PHOTOS_IN_VIEW 100
+
 @interface CollectionViewController : UICollectionViewController
 
-//@property (strong, nonatomic) NSMutableArray *photoURLs;
-@property (strong, nonatomic) NSMutableArray *allPhotos;
+//@property (strong, nonatomic) NSMutableArray *allPhotos;
 @property (strong, nonatomic) NSString *flickrTag;
 
 -(void)addNewPhoto:(myFlickrPhoto *)photo withTag:(NSString *)tag;
-//-(void)updateURLs: (NSArray *)newURLs;
 
 @end

@@ -22,11 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self setFlickrTags];
-}
-
--(void)setFlickrTags {
     self.flickrTags = [[PhotoManager sharedInstance] flickrTags];
 }
 
@@ -36,18 +31,18 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"leftMenuCell"];
-    
     cell.textLabel.text = self.flickrTags[indexPath.row];
-    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if ([self.revealViewController.frontViewController isKindOfClass:[UINavigationController class]]) {
-        UINavigationController *navigationController = (UINavigationController *)self.revealViewController.frontViewController ;
-        CollectionViewController *cvc = navigationController.viewControllers.firstObject;
-        cvc.flickrTag = self.flickrTags[indexPath.row];
+        UINavigationController *navigationController = (UINavigationController *)self.revealViewController.frontViewController;
+        if ([navigationController.viewControllers.firstObject isKindOfClass:[CollectionViewController class]]) {
+            CollectionViewController *cvc = navigationController.viewControllers.firstObject;
+            cvc.flickrTag = self.flickrTags[indexPath.row];
+        }
     }
     [self.revealViewController revealToggleAnimated:YES];
 }

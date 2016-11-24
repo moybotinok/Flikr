@@ -11,6 +11,6 @@
 
 @interface MyImageSize : NSObject
 
-+(CGRect)getGoodSizeForImage:(UIImage *)image ;
++(CGRect)getGoodSizeForImage:(UIImage *)image inViewController:(UIViewController *)controller;
 
 @end

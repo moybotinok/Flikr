@@ -10,18 +10,14 @@
 
 @implementation MyImageSize
 
-+(CGRect)getGoodSizeForImage:(UIImage *)image {
-    CGRect result = CGRectZero;
++(CGRect)getGoodSizeForImage:(UIImage *)image inViewController:(UIViewController *)controller{
+    CGFloat widthOfView = CGRectGetWidth(controller.view.frame);
+    CGFloat heightOfNavigationBarAndStatusBar = CGRectGetMaxY(controller.navigationController.navigationBar.frame);
+    CGFloat koefForScale = widthOfView / image.size.width ;
     
-    
-    UIWindow *firstWindow = [[UIApplication sharedApplication].windows firstObject];
-    CGFloat widthOfRootWindow = firstWindow.rootViewController.view.frame.size.width;
-    CGFloat yFromNavigationBarAndStatusBar = CGRectGetMaxY( firstWindow.inputViewController.navigationController.navigationBar.frame);
-    CGFloat koefForScale = widthOfRootWindow / image.size.width ;
-    
-    result = CGRectMake(0.f,
-                        yFromNavigationBarAndStatusBar,
-                        widthOfRootWindow,
+    CGRect result = CGRectMake(0.f,
+                        heightOfNavigationBarAndStatusBar,
+                        widthOfView,
                         image.size.height * koefForScale);
     return result;
 }
