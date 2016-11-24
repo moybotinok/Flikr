@@ -13,7 +13,6 @@
 #import "MyCustomSegueToImage.h"
 #import "myFlickrPhoto.h"
 #import "PhotoManager.h"
-#import "myFlickrPhoto.h"
 #import "MyImageSize.h"
 
 @interface CollectionViewController ()
