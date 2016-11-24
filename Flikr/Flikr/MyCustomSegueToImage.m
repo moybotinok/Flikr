@@ -39,6 +39,10 @@
     //      create image moving
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.sourceRect];
     imageView.image = self.transitionImage;
+    
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.clipsToBounds = YES;
+    
     UIWindow *mainWindow = [[UIApplication sharedApplication].windows objectAtIndex:0];
     [mainWindow addSubview:imageView];
     
